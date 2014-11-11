@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>rest portfolio</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="{% static "js/vendors/angular/angular-resource.js" %}"></script>
+    <script src="{% static "js/vendors/angular/angular-route.js" %}"></script>
+    <script src="{% static "js/vendors/angular-ui/ui-bootstrap-tpls-0.11.2.min.js" %}"></script>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+        <!-- Defines our Angular app -->
+    <script src="{% static "js/app.js" %}"></script>
+
+    <!------- Resources ------->
+
+        <script src="{% static "js/factories/projectResource.js" %}"></script>
+
+    <!-- Defines our index page's controller -->
+
+    <script src="{% static "js/controllers/projectController.js" %}"></script>
+{#    <script src="{% static "js/controllers/UserCreationController.js" %}"></script>#}
+{#    <script src="{% static "js/controllers/UserDetailCtrl.js" %}"></script>#}
+{#    <script src="{% static "js/controllers/UserListCtrl.js" %}"></script>#}
+
+
+
+
+</head>
+
+<body>
+<div ng-app="restApp">
+    <div ng-view></div>
+</div>
+</body>
+</html>

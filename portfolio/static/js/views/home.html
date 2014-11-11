@@ -1,0 +1,35 @@
+<div class="col-sm-offset-2 col-sm-4">
+    <h1>Users:</h1>
+    <hr>
+
+    <div ng-repeat="user in users">
+        <ul>
+            <li>First name: {{ user.first_name }}</li>
+            <li>Last name: {{ user.last_name }}</li>
+            <li>Email: {{ user.email }}</li>
+             <a ng-click="editUser(user.id)" class="btn btn-small btn-primary">edit</a>
+             <a ng-click="deleteUser(user.id)" class="btn btn-small btn-danger">delete</a>
+            <br>
+             <a ng-click="createNewUser()" class="btn btn-small btn-warning">create new user</a>
+        </ul>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-sm-offset-1 col-sm-4">
+        <h1>Projects:</h1>
+        <hr>
+
+        <div ng-repeat="project in projects">
+            <ul>
+                <li>project title: {{ project.title }}</li>
+                <button type="submit" ng-click="info();" class="btn btn-small btn-info">more</button>
+                <br>
+
+                <div ng-show="data">Project description: {{ project.description }}
+
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
