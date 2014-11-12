@@ -1,6 +1,6 @@
 from compiler.ast import obj
 from rest_framework import viewsets, status
-from rest_framework.decorators import detail_route
+from rest_framework.decorators import detail_route, list_route
 from rest_framework.response import Response
 from portfolio.api.permissions import IsOwnerOrReadOnly
 from portfolio.api.serializers import UserSerializer, ProjectSerializer
@@ -33,6 +33,13 @@ class ProjectViewSet(viewsets.ModelViewSet):
         project.follower.add(follower_id)
         return Response(status=status.HTTP_200_OK)
 
+    @list_route()
+    def recent_users(self, request):
+        recent_users = User.objects.all().order('-last_login')
+        page = self.paginate_queryset(recent_users)
+        serializer = self.get_pagination_serializer(page)
+        return Response(serializer.data)
+
     def pre_save(self, obj):
         obj.owner = self.request.user
 
@@ -42,3 +49,4 @@ class ProjectViewSet(viewsets.ModelViewSet):
         if username is not None:  # Optionally filters against 'username' query param
             queryset = queryset.filter(owner__username=username)
         return queryset
+

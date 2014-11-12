@@ -1,19 +1,59 @@
-<div class="col-sm-offset-2 col-sm-4">
+<div class="col-sm-offset-2 col-sm-3">
     <h1>Users:</h1>
     <hr>
 
     <div ng-repeat="user in users">
-        <ul>
-            <li>First name: {{ user.first_name }}</li>
+        <ul><br>
+            <li style="margin-top: 20px">First name: {{ user.first_name }}</li>
             <li>Last name: {{ user.last_name }}</li>
             <li>Email: {{ user.email }}</li>
-             <a ng-click="editUser(user.id)" class="btn btn-small btn-primary">edit</a>
-             <a ng-click="deleteUser(user.id)" class="btn btn-small btn-danger">delete</a>
-            <br>
-             <a ng-click="createNewUser()" class="btn btn-small btn-warning">create new user</a>
         </ul>
-    </div>
+        <a ng-click="updateFields=!updateFields" class="btn btn-small btn-primary">Edit user info</a>
+
+        <div ng-hide="updateFields">
+
+            <hr>
+            <h1>Update user details</h1>
+
+            <form novalidate="novalidate" class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="inputFirstName">First name:</label>
+
+                    <div class="controls">
+                        <input type="text" id="inputFirstName" ng-model="user.first_name"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputLastName">Last name:</label>
+
+                    <div class="controls">
+                        <input type="text" id="inputLastName" ng-model="user.last_name"/>
+                    </div>
+                      <div class="control-group">
+                    <label class="control-label" for="inputEmail">Email:</label>
+
+                    <div class="controls">
+                        <input type="text" id="inputEmail" ng-model="user.email"/>
+                    </div>
+                </div>
+                    <br>
+                </div>
+            </form>
+
+            <div class="control-group">
+                <div class="controls">
+                    <a ng-click="editUser(user.id)" class="btn btn-small btn-info">update</a>
+                    <hr>
+
+                </div>
+            </div>
+        </div>
+        <div ng-hide="updateFields"></div>
+        <br>
+        <a ng-click="deleteUser(user.id)" class="btn btn-small btn-danger">delete</a>
+        <a ng-click="createNewUser()" class="btn btn-small btn-warning">create new user</a></div>
 </div>
+
 <div class="row">
 
     <div class="col-sm-offset-1 col-sm-4">
@@ -24,7 +64,7 @@
             <ul>
                 <li>project title: {{ project.title }}</li>
                 <button type="submit" ng-click="info();" class="btn btn-small btn-info">more</button>
-                <br>
+
 
                 <div ng-show="data">Project description: {{ project.description }}
 
